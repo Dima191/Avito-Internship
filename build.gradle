@@ -1,0 +1,14 @@
+plugins {
+    id 'base'
+}
+
+task goBuild(type: Exec) {
+    workingDir = file('.')
+    commandLine 'go', 'build', './cmd/app'
+}
+
+task goClean(type: Delete){
+    delete 'app'
+}
+
+goBuild.dependsOn(goClean)
